@@ -49,7 +49,7 @@ export const workExperiences = [
     position: "Teaching assistant",
     company: "Massive Information and Knowledge Engineering Laboratory",
     url: "https://mike.cpe.ku.ac.th/",
-    years: ["2021"],
+    years: ["Jun 2021","Oct 2021"],
     details: [
       "I'm TA in 01204111 Computer & Programming course for first-year computer engineering student, Kasetsart University.",
     ],
@@ -58,9 +58,9 @@ export const workExperiences = [
     position: "Internship Student",
     company: "Thailand National Metal and Materials Technology Center",
     url: "https://www.mtec.or.th/",
-    years: ["2021"],
+    years: ["May 2021","Jun 2021"],
     details: [
-      "Optimized applications to preferred nanocrystalline configurations in ternary and multicomponent alloys",
+      "Optimized applications to preferred nanocrystalline configurations in ternary and multicomponent alloys.",
       "Optimized the microstructures building time to be 90% faster than existing source code.",
       "Optimized source code to compile on Cython libraries.",
     ],

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Tailwind from "./Tailwind.svelte"
-  import Intro from "./Intro.svelte"
-  import Work from "./Work.svelte"
-  import HideToggle from "./HideToggle.svelte"
+  import Tailwind from "./Tailwind.svelte";
+  import Intro from "./Intro.svelte";
+  import Work from "./Work.svelte";
+  import HideToggle from "./HideToggle.svelte";
   import {
     educations,
     fullVersionLink,
@@ -12,21 +12,18 @@
     technologies,
     workExperiences,
     references,
-  } from "./data"
+  } from "./data";
 
-  let editMode = false
+  let editMode = false;
 
   function toggleMode() {
-    editMode = !editMode
+    editMode = !editMode;
   }
 </script>
 
-
 <Tailwind />
 
-<header
-  class="web-only text-center p-4 sm:p-6 bg-blue-400 text-white w-screen"
->
+<header class="web-only text-center p-4 sm:p-6 bg-blue-400 text-white w-screen">
   <h1 class="text-4xl">Résumé</h1>
   <h3>
     <button on:click={toggleMode} class="underline text-lg"
@@ -88,7 +85,9 @@
 
   <section>
     <HideToggle />
-    <h2 class="text-2xl print:text-4xl uppercase text-left">Work Experiences</h2>
+    <h2 class="text-2xl print:text-4xl uppercase text-left">
+      Work Experiences
+    </h2>
     <hr />
 
     {#each workExperiences as exp}
@@ -105,11 +104,15 @@
       {#each projects as project}
         <li>
           <HideToggle />
-          <a href="https://{project.url}" target="_blank" rel="noreferrer"
-            ><strong>{project.name}</strong></a
-          > 
+          {#if project.url == undefined}
+            <strong>{project.name}</strong>
+          {:else}
+            <a href="https://{project.url}" target="_blank" rel="noreferrer"
+              ><strong>{project.name}</strong></a
+            >
+          {/if}
           {#each project.details as detail}
-            <ul class="index">{detail} </ul>
+            <ul class="index">{detail}</ul>
           {/each}
         </li>
       {/each}
@@ -125,11 +128,15 @@
       {#each references as ref}
         <li>
           <HideToggle />
-          <a href="https://{ref.url}" target="_blank" rel="noreferrer"
-            ><strong>{ref.name}</strong></a
-          > 
+          {#if ref.url == undefined}
+            <strong>{ref.name}</strong>
+          {:else}
+            <a href="https://{ref.url}" target="_blank" rel="noreferrer"
+              ><strong>{ref.name}</strong></a
+            >
+          {/if}
           {#each ref.details as detail}
-            <i><ul class="index">{detail} </ul> </i>
+            <i><ul class="index">{detail}</ul> </i>
           {/each}
         </li>
       {/each}
@@ -168,7 +175,6 @@
     @apply mt-0 mb-2;
     border-color: darkgrey;
   }
-
 
   :global(.print-only) {
     display: none;
