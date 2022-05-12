@@ -2,17 +2,16 @@
   import Tailwind from "./Tailwind.svelte"
   import Intro from "./Intro.svelte"
   import Work from "./Work.svelte"
-  import Kofi from "./Kofi.svelte"
   import HideToggle from "./HideToggle.svelte"
   import {
     educations,
     fullVersionLink,
-    interests,
     introData,
     projects,
     sourceLink,
     technologies,
     workExperiences,
+    references,
   } from "./data"
 
   let editMode = false
@@ -22,17 +21,13 @@
   }
 </script>
 
-<!-- Remove this is you does not want Kofi widget on your site -->
-{#if introData.github == "narze"}
-  <Kofi name={introData.github} />
-{/if}
 
 <Tailwind />
 
 <header
-  class="web-only text-center p-4 sm:p-6 bg-green-400 text-white w-screen"
+  class="web-only text-center p-4 sm:p-6 bg-blue-400 text-white w-screen"
 >
-  <h1 class="text-4xl">Resumette</h1>
+  <h1 class="text-4xl">Résumé</h1>
   <h3>
     <button on:click={toggleMode} class="underline text-lg"
       >{editMode ? "[View]" : "[Edit]"}</button
@@ -59,6 +54,20 @@
     : 'display-mode'}"
 >
   <Intro {...introData} />
+  <section>
+    <HideToggle />
+    <h2 class="text-2xl print:text-4xl uppercase text-left">Education</h2>
+    <hr />
+
+    <ul class="text-left list-disc pl-8">
+      {#each educations as edu}
+        <li>
+          <HideToggle />
+          <strong>{edu.head}</strong>, {edu.details}
+        </li>
+      {/each}
+    </ul>
+  </section>
 
   <section>
     <HideToggle />
@@ -79,22 +88,7 @@
 
   <section>
     <HideToggle />
-    <h2 class="text-2xl print:text-4xl uppercase text-left">Education</h2>
-    <hr />
-
-    <ul class="text-left list-disc pl-8">
-      {#each educations as edu}
-        <li>
-          <HideToggle />
-          <strong>{edu.head}</strong>, {edu.details}
-        </li>
-      {/each}
-    </ul>
-  </section>
-
-  <section>
-    <HideToggle />
-    <h2 class="text-2xl print:text-4xl uppercase text-left">Work Experience</h2>
+    <h2 class="text-2xl print:text-4xl uppercase text-left">Work Experiences</h2>
     <hr />
 
     {#each workExperiences as exp}
@@ -111,11 +105,12 @@
       {#each projects as project}
         <li>
           <HideToggle />
-          <strong>{project.name}</strong>
-          - {project.details}
           <a href="https://{project.url}" target="_blank" rel="noreferrer"
-            ><strong>{project.url}</strong></a
-          >
+            ><strong>{project.name}</strong></a
+          > 
+          {#each project.details as detail}
+            <ul class="index">{detail} </ul>
+          {/each}
         </li>
       {/each}
     </ul>
@@ -123,25 +118,30 @@
 
   <section>
     <HideToggle />
-    <h2 class="text-2xl print:text-4xl uppercase text-left">Interests</h2>
+    <h2 class="text-2xl print:text-4xl uppercase text-left">references</h2>
     <hr />
 
     <ul class="text-left list-disc pl-8">
-      {#each interests as interest}
+      {#each references as ref}
         <li>
           <HideToggle />
-          {interest}
+          <a href="https://{ref.url}" target="_blank" rel="noreferrer"
+            ><strong>{ref.name}</strong></a
+          > 
+          {#each ref.details as detail}
+            <i><ul class="index">{detail} </ul> </i>
+          {/each}
         </li>
       {/each}
     </ul>
   </section>
 
-  <footer class="print-only">
+  <!-- <footer class="print-only">
     (See <a href={fullVersionLink} target="_blank" rel="noopener"
       >full version</a
     >
     or <a href={sourceLink} target="_blank" rel="noopener">source</a>)
-  </footer>
+  </footer> -->
 </main>
 
 <style>
@@ -152,7 +152,10 @@
   a {
     text-decoration: underline;
   }
-
+  ul.index {
+    list-style-type: none;
+    margin-left: 15px;
+  }
   section {
     @apply my-4;
   }
@@ -165,6 +168,7 @@
     @apply mt-0 mb-2;
     border-color: darkgrey;
   }
+
 
   :global(.print-only) {
     display: none;
