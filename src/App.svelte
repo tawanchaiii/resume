@@ -160,8 +160,7 @@
     text-decoration: underline;
   }
   ul.index {
-    list-style-type: none;
-    margin-left: 15px;
+    @apply pl-6;
   }
   section {
     @apply my-4;
