@@ -18,12 +18,12 @@ export const technologies = [
   {
     section: "Languages:",
     details:
-      "C, C++, Python, Go, SQL, Shell script, Assembly (On RISC-V Architecture)",
+      "C, C++, Python, Javascript, Go, SQL, Shell script",
   },
   {
     section: "Frameworks:",
     details:
-      "ReactJS, NextJS, Svelte, Docusaurus 2, Bootstrap",
+      "ReactJS, NextJS, Svelte, Docusaurus 2, Bootstrap, ExpressJS",
   },
   {
     section: "Tools:",
@@ -33,7 +33,7 @@ export const technologies = [
   {
     section: "Other:",
     details:
-      "Firebase, Vercel, Netlify, DigitalOcean, CloudFlare, MongoDB atlas",
+      "Firebase, Vercel, Netlify, Heroku, DigitalOcean, CloudFlare, MongoDB atlas",
   },
 ]
 
@@ -45,6 +45,15 @@ export const educations = [
 ]
 
 export const workExperiences = [
+  {
+    position: "Finalist",
+    company: "ASC Students Supercomputer Challenge",
+    url: "http://www.asc-events.org/ASC22/",
+    years: ["4","10 Nov 2022"],
+    details: [
+      "I’m representative of Kasetsart university to compete the ASC Student Supercomputer Challenge 2022, the world’s largest supercomputing hackathon.",
+    ],
+  },
   {
     position: "Teaching assistant",
     company: "Massive Information and Knowledge Engineering Laboratory",
@@ -63,6 +72,15 @@ export const workExperiences = [
       "Optimized applications to preferred nanocrystalline configurations in ternary and multicomponent alloys.",
       "Optimized the microstructures building time to be 90% faster than existing source code.",
       "Optimized source code to compile on Cython libraries.",
+    ],
+  },
+  {
+    position: "Participant",
+    company: "15th  Thailand Olympiad in Informatics",
+    url: "https://www.facebook.com/toi.posn/",
+    years: ["4","7 Jun 2019"],
+    details: [
+      " I was selected to represent TOI participant from The Promotion of Academic Olympiad and Development of Science Education Foundation under the patronage camp (POSN), Silpakorn University center.",
     ],
   },
 ]
